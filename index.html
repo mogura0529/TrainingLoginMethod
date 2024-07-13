@@ -6,7 +6,7 @@
   <title>ログイン画面</title>
 </head>
 <body>
-	<!--保護者入力欄-->
+<!--保護者入力欄-->
 <div class="container" style="height: 100vh;" id="parent">
 	<div class=" row h-100 d-flex align-items-center">
 	    <div class="col-12">
@@ -48,7 +48,7 @@
 							<input type="text" id="parent_user_id" class="form-control" size="30" required="">
 						</div>
 						<div class="col-5 px-0  d-flex align-items-center">
-							<label class="mb-0">@g.sample-school.ed.jp</label>
+							<label class="mb-0">@g.hachioji-school.ed.jp</label>
 						</div>
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 	</div>
 </div>
 	
-	<!--実際の入力欄-->
+<!--実際の入力欄-->
 <div class="container d-none" style="height: 100vh;" id="child">
 	<div class=" row h-100 d-flex align-items-center">
 	    <div class="col-12">
@@ -105,7 +105,7 @@
 							<input type="text" id="child_user_id" class="form-control" size="30" required="">
 						</div>
 						<div class="col-5 px-0  d-flex align-items-center">
-							<label class="mb-0">@g.sample-school.ed.jp</label>
+							<label class="mb-0">@g.hachioji-school.ed.jp</label>
 						</div>
 					</div>
 				</div>
@@ -135,31 +135,66 @@
         </div>
 	</div>
 </div>
+
+<!--モーダルダイアログ-->
+<div class="modal" tabindex="-1" role="dialog" id="message-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">title default</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>body default</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">とじる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 	
 	<script>
 		let parentId = "";
 		let parentPassword="";
 		
+		const modalId = "#message-modal";
+		const modalBodySelector = modalId + " .modal-body p";
+		const modalTitleSelector = modalId + " .modal-title";
+		
 		function collect_dialog() {
-			alert('せいかい！ただしくにゅうりょくできました！');
+			$(modalTitleSelector).text("せいかい！");
+			$(modalBodySelector).text("ただしくにゅうりょくできました！");
+			$(modalId).modal("show");
 		}
 		function incollect_dialog() {
-			alert('ふせいかい！もういちどにゅうりょくしましょう！');
+			$(modalTitleSelector).text("ふせいかい！");
+			$(modalBodySelector).text("もういちどにゅうりょくしましょう");
+			$(modalId).modal("show");
 		}
 		function dicisionIdAndPassword() {
 			parentId = document.getElementById("parent_user_id").value;
 			parentPassword = document.getElementById("parent_password").value;
 			if(!parentId){
-				alert("ユーザーIDを入力してください。");
+				$(modalTitleSelector).text("入力エラー");
+				$(modalBodySelector).text("ユーザーIDを入力してください。");
+				$(modalId).modal("show");
 				return;
 			}
 			if(!parentPassword ){
-				alert("パスワードを入力してください。");
+				$(modalTitleSelector).text("入力エラー");
+				$(modalBodySelector).text("パスワードを入力してください。");
+				$(modalId).modal("show");
 				return;
 			}
 			document.getElementById('parent').classList.add('d-none');
 			document.getElementById('child').classList.remove('d-none');
-			alert("IDとパスワードが入力されました。お子様と交代してください。");
+			$(modalTitleSelector).text("");
+			$(modalBodySelector).text("IDとパスワードが入力されました。お子様と交代してください。");
+			$(modalId).modal("show");
 		}
 		function checkIdAndPassword(){
 			let childId = document.getElementById("child_user_id").value;
@@ -177,4 +212,7 @@
 		}
   </script>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body></html>
