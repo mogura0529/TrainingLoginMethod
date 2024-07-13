@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <title>ログイン画面</title>
+</head>
+<body>
+	<!--保護者入力欄-->
+<div class="container" style="height: 100vh;" id="parent">
+	<div class=" row h-100 d-flex align-items-center">
+	    <div class="col-12">
+	    	<div class="row">
+		  		<div class="col-12 d-flex pb-3">
+		  			<div class="row border border-dark p-2">
+			  			<div class="col-12">
+					  		<div>
+					  			保護者の方へ<br>
+					  			これはお子様がユーザーIDとパスワードを正しく入力できるかを練習するページです。<br>
+					  			すべて<b>オフライン</b>で動作し、ユーザーIDやパスワードが<b>外部に送信されることはありません。</b><br><br>
+					  			下の入力欄にユーザーIDとパスワードを入力した後、お子様が同じユーザーIDとパスワードが入力できれば
+					  			<button type="button" class="btn btn-primary btn-sm px-1" onClick="collect_dialog()">このように表示されます</button><br>
+					  			間違った入力をしている場合は<button type="button" class="btn btn-primary btn-sm px-1" onClick="incollect_dialog()">このように表示されます</button>
+					  		</div>
+				  		</div>
+				  	</div>
+			  	</div>
+		  	</div>
+		  	<div class="row">
+		  		<div class="col-12">
+				    <div class="row ">
+					    <div class="col-5">
+					        <img src="data:image/png;base64,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">
+					    </div>
+					</div>
+				</div>
+		  		<div class="col-12 pb-3 pt-3">
+			  		<b>ログインとパスワードを入力してください</b>
+			  	</div>
+		  	</div>
+			<div class="row">
+				<div class="col-12  pb-3 ">
+					<div class="row">
+						<div class="col-3 px-0 d-flex align-items-center justify-content-center">
+							<label for="parent_user_id" class="mb-0 w-75 badge badge-pill badge-secondary d-flex align-items-center justify-content-center">ユーザーID</label>
+						</div>
+						<div class="col-4 px-0">
+							<input type="text" id="parent_user_id" class="form-control" size="30" required="">
+						</div>
+						<div class="col-5 px-0  d-flex align-items-center">
+							<label class="mb-0">@g.hachioji-school.ed.jp</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-12  pb-3">
+					<div class="row">
+						<div class="col-3 px-0 d-flex align-items-center justify-content-center">
+							<label for="parent_password" class="mb-0 w-75 badge badge-pill badge-secondary d-flex align-items-center justify-content-center">パスワードID</label>
+						</div>
+						<div class="col-4 px-0">
+							<input type="text" id="parent_password" class="form-control" size="30" required="">
+						</div>
+						<div class="col-5 r-0  d-flex align-items-center">
+							<button type="button" class="btn btn-warning" onClick="dicisionIdAndPassword()">LOGIN</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="row">
+						<div class="col-3">
+						</div>
+						<div class="col-4">
+							Google Workspace ステータス
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	<!--実際の入力欄-->
+<div class="container d-none" style="height: 100vh;" id="child">
+	<div class=" row h-100 d-flex align-items-center">
+	    <div class="col-12">
+		  			  	<div class="row">
+		  		<div class="col-12">
+				    <div class="row ">
+					    <div class="col-5">
+					        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANUAAAA2CAYAAABQkNyvAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7OHOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABV0RVh0Q3JlYXRpb24gVGltZQAxNi41LjE5EspArgAAFldJREFUeF7tnQtwJMV5gH+dgTsO7o7HcThg7g7YFSAEB8S8VrF9PALsiocIsRzziEhwZgE7kWJbhbFFuShUHEEEVi7HsEtsn4zBsVK2FYJ2HSoBYrILNhWeKoG1C+Zp8zzecAbM5v97/pnt7unZnX2MVkf0qbpqpkf9mMff/ffff/d2lBFYZJFFWkbLhOq5N1+Gb979fdj8cA4+9Mly3co9Ye+Ve8AjLz4BIz3nwdkHnwh7r1jNVxdZ5KNBU0L18ruvw388cR+GX8Evf/solLY8B2X8C8LSj20P61btCUftdRCcvN9RcAqG3XdcyVc/2pRKJYBIBCJ8vshHi4aE6rWtb8END9wKP5y5HWZffopjm+Pg1evhnO4/hYuOOANWLd2JYxciJcjligDRKMRRMOojB8meBGQK9lksVYT84KJofdSoW6h+Nnc3XPbf321cmDowVCmxa/U6uOIzF8CZnZ/imIVECcZ7ojDEQmFly5CO28eByCWhI5HhEySWgmJ+sK09lug1mWIRGwskGo1TR+pSyuXAvjIHU1Oz4oiYmZnhI4BCgR8KErOyMIEP5v9rcxFYqF7d+iYM33E9fO+hHMeEywUbEnD18RfCrstWcEz7KY33QNSRKKTunqZNQlUaT8LAJAsAfvyVO/DHuTf9noOy0Hphp/GwGw6ncZjBhoFi8ZlIt0iNQr6u1lIlkFA9+spTcMH01XDvc5VWqmFq9FQyx+zdBd/rvQQO3H0tx7QTVN06UHXjM6L5nsqC1EgfdOLh3NQU2E+XXnQ3jEykUb0UEc1RGoee6FAgQVKxIFtOA940yFUOTGgNBmoLyQEYYh1a9IrD0UDCUg91v1uJmkL14Asl+NzU5VDc8izHVIeseZ277QNfOfpzkNj/aI61yT7+S7jm3n+B4qvPCmthEDp3+wRMnnk5HLpmP45pDzn948KXWfZ56qXcOIw5ahK+XbuPqPMFV8m/LhoWqhikinnonfb2VLFYjI+6obubD2cy7lhREJZQ6Q1TWDTx/KsK1WOvPA0n/eir8OybL3GMme2XbAenR2Nw5gGfhqP3Ogj233UvvmLm8Vd/K6yFP/v1L+DWYgHe//ADvmJmn5Vr4Pa/uAYO2H0fjplnPC/SbsXjbquJMakJSJO606qX3iqhQmT1r5ukoKsL+jqpf0SiUYiKgyKMDVSMKI5QCQ2ulIPxgVGYxLTdXX3Q1xv39qK68G7rQtVM/UmoTLzw9qvlQ278q3LHlRt9w45Xn1S+MPeP5QeeL3Kq+qG0lAflZSrDCYfe+Nfll955jVPNJ9myZSusbkDVQFBMxaT4WDmFj0GNayzEYpbIq5XodY1ZqXK2qBaSteR62PfDF6R4w3WimCpj/1W5HkuVW3wLNno59QR6rtlsOUsB7x1VRq5jsZyK6f/beP2XYAYe/lD+EC7KXQszL/2GY8xcePjpcO2JX4TD9my8PaK0lMffffIsjjHzyEtPAAqfqNv8QdY+dRxFA3DRgWCLaRrAR3r7sY1XIXXJCQrYGuLLFeMBfBduyOfTdg8RGqiKZoYggb1UMojdKZ6GYsrS7qsAk9MVyyEUZ1UVs7szdAOMAzYQgIKCwX6WKCv4HIuAgqIQ6x+GwTj2shRontCdK4xAp6PGtgCjUH3nf6eE6dwPmqh94uIfCWHYcbulIo4+9q0fvCeOg0D/+877W8Ux5XHVcZbI8/xDTxFxJn7667vh+vv/jc/CpzSOqp38paBKZlu0cpDUVRBrxBaEyCDkJQGxhSRvhxHvm4vyyw2byGAeysUsWLrEByQymIY8pk+5GcSgv7MI4+PjkJNkqx109w3agoI6qRCU+ZJmHzxC9cRrv4PL/2czn3khgbrljMtg/aqPc4zNxzqWwLLtduCz2tD/Lt9+GZ/ZUJ7fOfnvqwrW5Xdvht9gHUMHxwgDskSRjs1jnFxS7b3ka9S75XAMkxzPgTMFROZcEebYrO1QGIKBnh7owdDR0aGEnkBdSJ1E4pDOl6GYTaFwxcCyULEdpfJRMLDeevU8YPrBdJ7TF2AokYChIezxBsYx9SIOHqH6h3tugS3vvslnKo5A7bJsZ45pPSRsJFh+vPLuG6KOoaOrM0IAkjCe7NFMzDign6gMaKl3SwxlIDOUgGjUFpAoGQMoGNRFmjSVJ04dCplEMNWsASJR20iRyZDFjsofgqmaZWGjgCpvTw/eT2JItfShqqdLZKzLNn8sKGanIZfLYe+KjV6Sgt2g0T210vahCBWNW26auZ3PVHbbcQVMnHZpqALlQIJFFj8q08QPsI61xntNEx/26OSFQsadH3GwsmwhY4qzXgFZKJCpP4kfUEeUrHxSPbGnHfY1NGLPix9fRwc2CvjlqfKPvV0qK/XS7WFmbhwbOxYU7vl7sL56GybGkaJ3xcaEGhR8l3ajxv/QIhShuuH+W33HRV+PnQd7LN+Fz8LnV+ffAJceey6fqVAdwx9bRWDQVZU4SoOMFsOoOMljimiXPjq2hJpFIaUP9nGMVpTGXkVdilsF9TDUY+o9DEKTp7bpuAhqe9ANndRY5MawFfd+dcI4UMxDetB2R9Ibk26ROAQinVgzlQKqoENCSJyeFwNfaweuUL3w9qswXbqHz1QO2WM/sA47lc/mhz132hWsw0+F7j325RiV7OP3ijqHTSQ+iOMQgyUJP8YJGMAPNQGJaA+Ms2BFFDMSqYZpSKftMNjbxfESYryFgolqybTisBKD1mhQJRgfxR6Gz1zIm4Nai5lRe1yneYu4RLvUhgDTkcVyBCbFfYehPm3ruEL1i2cegqffeJHPVAaP/HPYeYcd+Wz+WLHDclG2iadffxHufuZhPguXXFJTJcgKiCpPRYBw0B5NYp+lg/EDzoeHQfdswHGTPd5CwSS1RB2o2D1F02jmYhKmbBHK+WEUKEf9MbTssS6Ikro4BtAvzNXcq+bTYuJ3DtPS/ZnVp1Y1CAZKc+yhUg3D9AVim94ds7s6jZG1+J9aQEWonn6Ij1TIItd/0EY+m38+e+BGj6WRwEfhW+dWQg6lSitM6pIzhoj2SaphBkapu9JbduejNX2480Q8XbTncWj+hubAhDsEqbcY75l/sol1z9rqIo5DyMo3BbLXOaadkM3rGrF+6A1J+zNhCUGpCEi5TFMYEx7tArp6JbN7eBUUQvXO+78Xq3FNnBaNtaWXcli5dDmcGjmWz1TIsEJ1Dw19gpdaur45GCOrEZm+xYCfryGFoTHsrXSdvzLxa+kfIU3+Ug/ALafyEVBPwYfNE+EJTz51wXiaf6IPsYhCl8LxIwaqUzeOT2Rm5jSjOZvX6SMuirQ8diTDRSiOtNVo/9yUjBCqZ1Dte/L150WEzvHrj+Cj9uFXB6pzLb/EhiFfNn2gIKxH1Hr79TrYW03P8TFjjbiTv+lhzduiu1N87HbLaa9YahsoJPFBHD9igCnNi4TUXT8XDzEZR2l57MiGi/kjRFWzQYRQ0dKOLVu9c1NkLDhwt/Yvu6ClHybLI82nkdNvGOTGAnh28/hE1scLs6hlyJIzM8pzIhgGJtU8cUxVmfDFMZV8MVQ3H1qB7JTbA8kcT07ncmLiWmlLsIfthtHKuNBNx0GMCTkfx1qzUJmdrpje3Tkqe+K9lYYW4aX+t7ePC3O67le3Yc3+cOc5qXmZm6oGLZA87uYheFhTUcmL40ufPBOuO/FLHNNCTN7QNPiVRuWVhXi2t/ok9MNEehCKja5BkghzkZ9nGUvLkDzbw8LwXipGCZPRpEHIS6ZBNVb0VHc8+YBxByQSplXL2r9fxKqlO8MuGHRwJCDqHgrsREpjBDIhiwFwfgR0IxFNqI7nQIwv8ihQdb8EMdayxyNyBxfaPM9HENcQ1CqBahIhVE+98bz4QHXIQIEdO5+1jyXYPZuMJdQO+I0FWwE5kQ53zsHU2JiPajMNYzjGGkpEoUe6Hu+TRI+shboRQgY/hK5hezxiO6ySILMnfEh4JqgJFG7boMIGBw4pNqfboWKOppD1s/6FiMd/siW0+D5I/dtp7GTjGqZTJ79GlxcEvT++xFO/JVceV155TYL/IwzUtVRWVj2PpbLSOhwL/1uG1uvwoXE9khz0tOHiXfOlrY0KSKvyqQd1zZc3YMPAwfKsu4pZWXsNlbuOqoIn32bXU61b+XFjj/TWe+9i7lRGeyHVlOqigx0Y7LuLdw6rZeSmzF4GLlFpYpXnqVzYzGuyInrIQKJnAXl6O171HMjbww2uM2oSxiYXgL6FmgB+x25wl9nkh6Ff74C6omxpxcBRYSCE6vj1hwsVS4f293t969t81j5e//1b8BoGHWoINq49jM9aj6pqmE23sipVmJzWBKME4wNVrIikYvEhecFHk7QAI3xUVyqCPELIgsfB8arnQN4ebnCdUcnPjpO7tMoLxA/v8pSF6A0vhOqE9X/sWdtEPP/2lnnxr6sF1eF3b23hswpU5+Ox7uFQgmm5JfbxElBW+hYmQV4Mq7s3VaxUDn2Qlu3x5LY0T4K1baI7/cagfz5dNwIihOqg3dfBrgazOX3Mj20JZx6oHmge7aV3XuOzCrRN9EGhbV+mvsBYf69ZZVC8pgswy3O4pt2XTCt/ycqo+J2RYIWtCuquVEYqniBOkA0YFDx5tNQLxIBHHQ+7Z2wMIVS0dsnkX0fc8eT9fNQ+7vQxm6/Feu+9Yg8+azHKC6zWIsZhmE175LBJ65Jy+kJGZWWwl3g6q5rqSRXsSc7rMnXa504em9j+c2pwvO3tYBizhIzH8mf14dNfeAihWr79UjjEZ1+920r3GI0E88Wb770j6mDi0DX7i7qHQW5Kkgpn/wkfxP4PNEhO9/LEr9zFWZCtOYkYV9VAopARSyvI22ERQlPHEatvIYoUCxXx6bUb+EiF9oOYfPQuPpt/fvzonca5KDJS+NW5eeQBcQxS1P3UpCT2Wff0ULRUgk+rIiab9aa/gNpgwB2P6sGw0C8zWrHqUai4JXFwjBhu8K6sDdW1qjQNqkxZ0LBMkVcG3wfdG7ks1TTQ1kFFqPbZINQpE6n7/rUtvRX1Ut+67yd8prJ21ZoQhUpag1Sjl3LJjalGCZr0rdPNhXo8dULVXq4eSKabBXtG16qHoeKlwIH/rV2UplW/yVhquGHVT1Yj6d7IQdpDEw2EK1TkPNvrs8SC9oPIPHjbvFsCMw/c5rsXRWL/Y2BNiMv742l7bFEcjtK0TW3Enha2RwI52YpFjHypHuJiOYWzgK6yXH1bIEzztrpc34IRp6UTc2n2oUoEepVBX8x1/YoMTvivBWOauRdl22dan3T05ouM+1TQJizLt1sGcxf+sK6tyJphdep0485OVD7tYeG31L55aLOTAc/YKDXRB7O0hsqJqtfpVXcGpYnLMP2RfLFVVVV9wwbB6vaohUDbPPMO0RVo/qoIY9KzIMJ0AqZnR5PoBeq9s9jY4GOzDUL2TfiXzUJnmvAt5SA5MKpugiNwtvVuEBIqGSt7jccdSA6X3pnh/wwfU/kUkljHMPF3hYmVv/Fdy3aDsRpxY5G3F46VU/Ppm6STldx4Gtxmupiq5NHY8/BH5C22aeYID9p23E1tM10sF7PZcsrC8rDAZu9D6akIMkwctflCsb+eH1879my4cuPf8Fk40C81Xvzz6/isAs1NUS+17y5/xDEtRtlon8Y0I9A3O8ot4jwsbVhEfQe+SzC03rZtvb4Xd0zlQB/rNz91Pp+ZueqeW+Drd93IZ63HT6AIqltoAkXIm2haI2JMQ+McbMkgW5xYFKgFQ2WPDRrDtnvvQRmPUBH0u7t/dkD1nwclwdpUuJnPWgMJ05JNx/kKFNXp4iP6+Gx+ifCm9r6IAXPjc0rCeZWPmyPsOjRTS/sZteY+CXuPDdrIJlhb10D59P8Y6sEoVLSi9vpTviz2+6vGFfkfwEU/v1b8MFyz/POD077CRFBdboh/xej42zQ5VDec+RjZkJBJVOJpPkOfL6LfbcLBspjzYOdTcezrDUEqC8+PcGa0WxOdC+dVKb46Tj5OnZxdZCmO60DXjGvAGqmDnb89V6XlT6qaOO/wmU9T0zplOMv4XTAfd3dZ2QlZ2m++h54rRwvIeMF5GW9VELB8Bel50v9jEMdBvVzEyMqHR19+qrz22/1GY4EcdrjqxPJZP7msfPPMf5ZLW57j1P7Q/9D/UprtrzrBmKccqA6Pvfw0p249/oYJLTg/TEUE+J2kmGf0Lw2ucWCd9fktK7kYM1I+Vsr720py8GRWZx1q3ScZbfjYc79FzZhgCE6aoO9Avh05jfdZI3WU7xLgvdZ6P8aeyoE2XPn3z24SPxFaDfolRPqZm3NvHYWNNw/CCbd8GaZL9/LVClfkb4LdrzsNjtycFP9LaT748A981Qz9euJt/ZtC/RXF+DD9xAw7jnKcg+xQmnKn8HOQVH410Fkha/+ahkNhqIo3BLbACXeULZdb5+5AtC+fyAbzoC3UaJsx+Saot/VrxmvWAXu1AXnpChluaAsz6T59J4YprWxyN6RFCkMDopeJ96WkZ80XmUp8PV4U9ZVvY3qvvMpZ2h8xk6jWMyIsXFWhHuvYiYuNvUiYITbxxVB7KCPyKl2fJklZ8Wow5SqtrnLd23LKLSWZdbOGBteLno/lSaeuypVXFgevgycPvQxtRbOST620zvWYYdWz3FtUMZVX66kaKV9JY3r3Ab4NompP5UA91nT/VXDBhgTHNEHAIdEXNvSKMtv2O7++qI6d1ojX3BsfxlaXj/U1Vgq0HEQyJ9rGED6pAyub9qSLDMqb1GT8fyrHtw7qfQq3IL0MfdmKS4C07IQstpHmuNbRSPlyGuzV+siThg0bTqAdifk/IDOlju8kAgkVseuyFXBjYhh+etYV0LV6Hcc2AMl5FShvKiOT+Grbt0YzI6+z8lHVIr3SsojKGiuVoI66tfBTieIg7z/j2WFWUK0O6n36LX0xbiITMG14NFK+nMZ2ZBZGDSXI6uQMGB8pElioHPo6/wTyf/lPsOk4Cw5evZ5jm4fyojwpbypj26CZRXILYYHdwlzkt23g/+zqFipi1dKd4JJjPg93nTsON53+DTiv+yRhzOgIqtsx1BNR2pvPGBF5UZ6U97aDf2tVYeFtS7xILbAH17Zj00O5im9gQ0LlQC5D5xx8oviFxf86+zo4eb8j+Uptjv3EwfDIF74v0n6+6wSR17ZBVNrWWfuFdgdl7U/YvYHfeCkH8jrL+jfnDHCf2tilQpC0mJp2Z6rZKDVCI+WraWZxpOzuvGQIVRHmikUq1Gv981iWZKdZPQ/Z8mawegWmtvUvmAWyeh3U+9T39CuqZWBQLHCaZdDSKljJ27BXYAusfw2Vr6Qx7WEo3XMV69+iUOkEMptqgoMvIGZZZQuD+zFwvPpiwhIqClIdtMlg9TbqqYO3HL8yxDXlZvVnhCFmShuSUDVUvjcNecpTGsuqTHKLUKVei0KlE0iokJqz9THDzHsYQoUvW/94pOD92OqsQw0PA0te/hHkw9YC7RrroSVCRTRSfu00xoZAYlGoPDgP1SQUOqQOaC0YBlpbpKtjDo5bkPFjCowuGN56UAubdfedVqm/Dub87Q+r8rzMHxqtVTL0bJTe7yFxeaLBqPb1OsIn7pXjPDRSPqYypsFvIsB6K896qkUWWaQZAP4PO+Lkw6gHVVEAAAAASUVORK5CYII=">
+					    </div>
+					</div>
+				</div>
+		  		<div class="col-12 pb-3 pt-3">
+			  		<b>ログインとパスワードを入力してください</b>
+			  	</div>
+		  	</div>
+			<div class="row">
+				<div class="col-12  pb-3 ">
+					<div class="row">
+						<div class="col-3 px-0 d-flex align-items-center justify-content-center">
+							<label for="child_user_id" class="mb-0 w-75 badge badge-pill badge-secondary d-flex align-items-center justify-content-center">ユーザーID</label>
+						</div>
+						<div class="col-4 px-0">
+							<input type="text" id="child_user_id" class="form-control" size="30" required="">
+						</div>
+						<div class="col-5 px-0  d-flex align-items-center">
+							<label class="mb-0">@g.hachioji-school.ed.jp</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-12  pb-3">
+					<div class="row">
+						<div class="col-3 px-0 d-flex align-items-center justify-content-center">
+							<label for="child_password" class="mb-0 w-75 badge badge-pill badge-secondary d-flex align-items-center justify-content-center">パスワードID</label>
+						</div>
+						<div class="col-4 px-0">
+							<input type="password" id="child_password" class="form-control" size="30" required="">
+						</div>
+						<div class="col-5 r-0  d-flex align-items-center">
+							<button type="button" class="btn btn-warning" onClick="checkIdAndPassword()">LOGIN</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="row">
+						<div class="col-3">
+						</div>
+						<div class="col-4">
+							Google Workspace ステータス
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+	</div>
+</div>
+	
+	<script>
+		let parentId = "";
+		let parentPassword="";
+		
+		function collect_dialog() {
+			alert('せいかい！ただしくにゅうりょくできました！');
+		}
+		function incollect_dialog() {
+			alert('ふせいかい！もういちどにゅうりょくしましょう！');
+		}
+		function dicisionIdAndPassword() {
+			parentId = document.getElementById("parent_user_id").value;
+			parentPassword = document.getElementById("parent_password").value;
+			if(!parentId){
+				alert("ユーザーIDを入力してください。");
+				return;
+			}
+			if(!parentPassword ){
+				alert("パスワードを入力してください。");
+				return;
+			}
+			document.getElementById('parent').classList.add('d-none');
+			document.getElementById('child').classList.remove('d-none');
+			alert("IDとパスワードが入力されました。お子様と交代してください。");
+		}
+		function checkIdAndPassword(){
+			let childId = document.getElementById("child_user_id").value;
+			let childPassword = document.getElementById("child_password").value;
+			if(parentId != childId){
+				incollect_dialog();
+				return;
+			}
+			if(parentPassword != childPassword){
+				incollect_dialog();
+				return;
+			}
+			collect_dialog();
+			
+		}
+  </script>
+
+</body></html>
